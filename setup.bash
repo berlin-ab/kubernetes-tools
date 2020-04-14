@@ -15,7 +15,7 @@ setup_git() {
     export GIT_PS1_SHOWSTASHSTATE=true
     export GIT_PS1_SHOWUNTRACKEDFILES=true
     export GIT_PS1_SHOWCOLORHINTS=true
-    export PROMPT_COMMAND='__git_ps1 "\n[\u@\h:\w]\n" " \\\$ "'    
+    export PROMPT_COMMAND='__git_ps1 "\n[\u@\h:\w]\n" " \\\$ "'
 }
 
 setup_aliases() {
@@ -28,7 +28,7 @@ setup_aliases() {
     alias pg='cd ~/workspace/postgres-for-kubernetes'
     alias pgp='cd ~/workspace/pg-postgres-release'
     alias sc='cd ~/workspace/state-checker'
-    alias k='/usr/local/bin/kubectl'    
+    alias k='/usr/local/bin/kubectl'
 }
 
 setup_go() {
@@ -47,8 +47,6 @@ setup_gcloud() {
 }
 
 setup_kubectl() {
-    . "${tools_directory}/kubectl/kubectl-completion.bash"
-
     # ensure the alias `k` also completes
     complete -o default -o nospace -F __start_kubectl k
 }
