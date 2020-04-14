@@ -46,11 +46,21 @@ setup_gcloud() {
     fi
 }
 
+setup_kubectl() {
+    . "${tools_directory}/kubectl/kubectl-completion.bash"
+}
+
+setup_bash_completion() {
+    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+}
+
 main() {
     setup_aliases
     setup_git
     setup_go
     setup_gcloud
+    setup_bash_completion
+    setup_kubectl
 }
 
 main
