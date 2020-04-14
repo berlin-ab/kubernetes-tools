@@ -15,7 +15,6 @@ setup_git() {
     export GIT_PS1_SHOWSTASHSTATE=true
     export GIT_PS1_SHOWUNTRACKEDFILES=true
     export GIT_PS1_SHOWCOLORHINTS=true
-    export PROMPT_COMMAND='__git_ps1 "\n[\u@\h:\w]\n" " \\\$ "'
 }
 
 setup_aliases() {
@@ -40,7 +39,7 @@ setup_gcloud() {
     if [ -f '/Users/adamberlin/workspace/google-cloud-sdk/path.bash.inc' ]; then
 	. '/Users/adamberlin/workspace/google-cloud-sdk/path.bash.inc';
     fi
-    
+
     if [ -f '/Users/adamberlin/workspace/google-cloud-sdk/completion.bash.inc' ]; then
 	. '/Users/adamberlin/workspace/google-cloud-sdk/completion.bash.inc';
     fi
@@ -52,7 +51,22 @@ setup_kubectl() {
 }
 
 setup_bash_completion() {
-    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && \
+	. "/usr/local/etc/profile.d/bash_completion.sh"
+}
+
+
+__docker_source_name() {
+    # if empty string
+    if [ -z "$MINIKUBE_ACTIVE_DOCKERD" ]; then
+       echo "docker"
+    fi
+
+    echo $MINIKUBE_ACTIVE_DOCKERD
+}
+
+setup_docker_prompt() {
+    export PROMPT_COMMAND='__git_ps1 "\n ($(__docker_source_name)) [\u@\h:\w]\n" " \\\$ "'
 }
 
 main() {
@@ -62,6 +76,7 @@ main() {
     setup_gcloud
     setup_bash_completion
     setup_kubectl
+    setup_docker_prompt
 }
 
 main
