@@ -15,6 +15,8 @@ setup_git() {
     export GIT_PS1_SHOWSTASHSTATE=true
     export GIT_PS1_SHOWUNTRACKEDFILES=true
     export GIT_PS1_SHOWCOLORHINTS=true
+
+    export GIT_EDITOR=emacs
 }
 
 setup_aliases() {
