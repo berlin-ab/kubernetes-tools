@@ -48,6 +48,9 @@ setup_gcloud() {
 
 setup_kubectl() {
     . "${tools_directory}/kubectl/kubectl-completion.bash"
+
+    # ensure the alias `k` also completes
+    complete -o default -o nospace -F __start_kubectl k
 }
 
 setup_bash_completion() {
