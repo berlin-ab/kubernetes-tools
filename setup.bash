@@ -71,6 +71,10 @@ setup_docker_prompt() {
     export PROMPT_COMMAND='__git_ps1 "\n ($(__docker_source_name)) [\u@\h:\w]\n" " \\\$ "'
 }
 
+setup_kubebuilder() {
+    export PATH=$PATH:/usr/local/kubebuilder/bin
+}
+
 main() {
     setup_aliases
     setup_git
@@ -79,6 +83,7 @@ main() {
     setup_bash_completion
     setup_kubectl
     setup_docker_prompt
+    setup_kubebuilder
 }
 
 main
