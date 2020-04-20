@@ -30,6 +30,7 @@ setup_aliases() {
     alias pgp='cd ~/workspace/pg-postgres-release'
     alias sc='cd ~/workspace/state-checker'
     alias k='/usr/local/bin/kubectl'
+    alias h='helm'
 }
 
 setup_go() {
