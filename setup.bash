@@ -20,7 +20,7 @@ setup_git() {
 }
 
 setup_aliases() {
-    alias mini="eval $(minikube docker-env)"
+    alias mini='eval $(minikube docker-env)'
     alias tools="cd ${tools_directory}"
 
     alias inf='cd ~/workspace/gp-ci-infrastructure'
@@ -68,12 +68,26 @@ __docker_source_name() {
     echo $MINIKUBE_ACTIVE_DOCKERD
 }
 
+__active_kubectl_context() {
+    local current_context=$(kubectl config current-context)
+    # if empty string
+    if [ -z "$current_context" ]; then
+       echo "no kubectl"
+    fi
+
+    echo $current_context
+}
+
 setup_docker_prompt() {
-    export PROMPT_COMMAND='__git_ps1 "\n ($(__docker_source_name)) [\u@\h:\w]\n" " \\\$ "'
+    export PROMPT_COMMAND='__git_ps1 "\n (k8s=$(__active_kubectl_context)) \n (docker=$(__docker_source_name)) \n [\u@\h:\w]\n" " \\\$ "'
 }
 
 setup_kubebuilder() {
     export PATH=$PATH:/usr/local/kubebuilder/bin
+}
+
+setup_direnv() {
+    eval "$(direnv hook bash)"
 }
 
 main() {
@@ -85,6 +99,7 @@ main() {
     setup_kubectl
     setup_docker_prompt
     setup_kubebuilder
+    setup_direnv
 }
 
 main
