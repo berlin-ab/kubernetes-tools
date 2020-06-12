@@ -51,6 +51,8 @@ setup_gcloud() {
 setup_kubectl() {
     # ensure the alias `k` also completes
     complete -o default -o nospace -F __start_kubectl k
+
+    export PATH="${PATH}:${HOME}/.krew/bin"
 }
 
 setup_bash_completion() {
@@ -90,6 +92,11 @@ setup_direnv() {
     eval "$(direnv hook bash)"
 }
 
+setup_postgres_for_kubernetes_ci_tools() {
+    export PATH=$PATH:$HOME/workspace/postgres-for-kubernetes-ci/misc
+}
+
+
 main() {
     setup_aliases
     setup_git
@@ -100,6 +107,7 @@ main() {
     setup_docker_prompt
     setup_kubebuilder
     setup_direnv
+    setup_postgres_for_kubernetes_ci_tools
 }
 
 main
