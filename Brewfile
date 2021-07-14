@@ -1,6 +1,9 @@
 tap 'git-duet/tap'
 tap 'pivotal/tap'
 tap 'vmware-tanzu/carvel'
+tap 'cloudfoundry/tap'
+
+brew 'cloudfoundry/tap/bosh-cli'
 
 brew 'bash-completion'
 brew 'coreutils'

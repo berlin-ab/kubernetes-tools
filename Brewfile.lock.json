@@ -5,10 +5,13 @@
         "revision": "94b01a0f01d4504c12eb6fa6b225c4626093e50c"
       },
       "pivotal/tap": {
-        "revision": "fa179d7af5c91e0000deaf91de8abe28ec9b427e"
+        "revision": "0f50de8aade44c3b5b52ff047941f74f95de10ad"
       },
       "vmware-tanzu/carvel": {
         "revision": "09c96b5a17ddd2d53f7437e661374766b9dc7268"
+      },
+      "cloudfoundry/tap": {
+        "revision": "751d280fbfda4fa2df427a174357043d0241a370"
       }
     },
     "brew": {
@@ -1259,6 +1262,10 @@
       "vendir": {
         "version": "v0.21.1",
         "bottle": false
+      },
+      "cloudfoundry/tap/bosh-cli": {
+        "version": "6.4.4",
+        "bottle": false
       }
     },
     "cask": {
@@ -1305,7 +1312,7 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.2.2",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "b45378fd1af703a66a55877d82062a0b01d1bfd4",
+        "Homebrew/homebrew-core": "21946b36647a23a1434bc30f74dfb6368fb2d3ad",
         "CLT": "12.5.0.22.11",
         "Xcode": "12.5",
         "macOS": "11.4"
