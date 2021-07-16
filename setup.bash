@@ -1,34 +1,24 @@
-#!/usr/bin/env bash
-
-
-tools_setup_file_path="${BASH_SOURCE[0]}"
-tools_directory=$(dirname $tools_setup_file_path)
-
 
 setup_git() {
-    # Source git bash helpers.
-    . "${tools_directory}/git/git-prompt.sh"
-    . "${tools_directory}/git/git-completion.bash"
-
-    export GIT_PS1_SHOWDIRTYSTATE=true
-    export GIT_PS1_SHOWUPSTREAM="verbose git name"
-    export GIT_PS1_SHOWSTASHSTATE=true
-    export GIT_PS1_SHOWUNTRACKEDFILES=true
-    export GIT_PS1_SHOWCOLORHINTS=true
-
+    git config --global alias.co checkout
+    git config --global alias.st status
+    
     export GIT_EDITOR=emacs
 }
 
 setup_aliases() {
     alias mini='eval $(minikube docker-env)'
-    alias tools="cd ${tools_directory}"
 
+    # navigation
+    alias tools='cd ~/workspace/kubernetes-tools'
     alias inf='cd ~/workspace/gp-ci-infrastructure'
     alias ts='cd ~/workspace/gp-toolsmiths/concourse/scripts'
     alias pgci='cd ~/workspace/postgres-for-kubernetes-ci'
     alias pg='cd ~/workspace/postgres-for-kubernetes'
     alias pgp='cd ~/workspace/pg-postgres-release'
     alias sc='cd ~/workspace/state-checker'
+
+    # shorthand binaries
     alias k='/usr/local/bin/kubectl'
     alias h='helm'
 }
@@ -102,9 +92,8 @@ main() {
     setup_git
     setup_go
     setup_gcloud
-    setup_bash_completion
+    setup_prompt
     setup_kubectl
-    setup_docker_prompt
     setup_kubebuilder
     setup_direnv
     setup_postgres_for_kubernetes_ci_tools
