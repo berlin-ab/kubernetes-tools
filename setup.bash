@@ -84,6 +84,7 @@ setup_kubebuilder() {
 
 setup_direnv() {
     eval "$(direnv hook bash)"
+    eval "$(direnv hook zsh)"
 }
 
 setup_postgres_for_kubernetes_ci_tools() {
