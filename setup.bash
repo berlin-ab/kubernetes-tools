@@ -70,8 +70,12 @@ __active_kubectl_context() {
     echo $current_context
 }
 
-setup_docker_prompt() {
-    export PROMPT_COMMAND='__git_ps1 "\n (k8s=$(__active_kubectl_context)) \n (docker=$(__docker_source_name)) \n [\u@\h:\w]\n" " \\\$ "'
+setup_prompt() {
+    export PROMPT='
+
+$(kube_ps1)
+(docker=$(__docker_source_name))'"
+$PROMPT"
 }
 
 setup_kubebuilder() {
