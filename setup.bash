@@ -1,5 +1,13 @@
 
 setup_git() {
+    source "$HOME/workspace/kubernetes-tools/git/git-prompt.sh"
+    
+    export GIT_PS1_SHOWDIRTYSTATE=true
+    export GIT_PS1_SHOWUPSTREAM="verbose git name"
+    export GIT_PS1_SHOWSTASHSTATE=true
+    export GIT_PS1_SHOWUNTRACKEDFILES=true
+    export GIT_PS1_SHOWCOLORHINTS=true
+    
     git config --global alias.co checkout
     git config --global alias.st status
     
@@ -40,7 +48,7 @@ setup_gcloud() {
 
 setup_kubectl() {
     # ensure the alias `k` also completes
-    complete -o default -o nospace -F __start_kubectl k
+    #complete -o default -o nospace -F __start_kubectl k
 
     export PATH="${PATH}:${HOME}/.krew/bin"
 }
@@ -70,12 +78,17 @@ __active_kubectl_context() {
     echo $current_context
 }
 
-setup_prompt() {
-    export PROMPT='
+kube_ps1() {
+    kubectl config current-context
+}
 
-$(kube_ps1)
-(docker=$(__docker_source_name))'"
-$PROMPT"
+setup_prompt() {
+    precmd () {
+	__git_ps1 "
+(kubecontext=$(kube_ps1))
+(docker=$(__docker_source_name))
+[%n]" ":%~$ " " | %s"
+    }
 }
 
 setup_kubebuilder() {
@@ -102,6 +115,8 @@ main() {
     setup_kubebuilder
     setup_direnv
     setup_postgres_for_kubernetes_ci_tools
+
+    export EDITOR=emacs
 }
 
 main
