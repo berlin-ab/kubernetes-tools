@@ -2,10 +2,13 @@ tap 'git-duet/tap'
 tap 'pivotal/tap'
 tap 'vmware-tanzu/carvel'
 tap 'cloudfoundry/tap'
+tap 'vmware/internal', 'git@gitlab.eng.vmware.com:homebrew/internal.git'
 
+brew 'tkg-release'
 brew 'cloudfoundry/tap/bosh-cli'
 
 brew 'bash-completion'
+brew 'zsh-completions'
 brew 'coreutils'
 brew 'direnv'
 brew 'git'

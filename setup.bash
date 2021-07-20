@@ -37,13 +37,10 @@ setup_go() {
 }
 
 setup_gcloud() {
-    if [ -f '/Users/adamberlin/workspace/google-cloud-sdk/path.bash.inc' ]; then
-	. '/Users/adamberlin/workspace/google-cloud-sdk/path.bash.inc';
-    fi
-
-    if [ -f '/Users/adamberlin/workspace/google-cloud-sdk/completion.bash.inc' ]; then
-	. '/Users/adamberlin/workspace/google-cloud-sdk/completion.bash.inc';
-    fi
+    # check brew info google-cloud-sdk for bash instructions
+    # these are zsh specific
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 }
 
 setup_kubectl() {
@@ -53,11 +50,14 @@ setup_kubectl() {
     export PATH="${PATH}:${HOME}/.krew/bin"
 }
 
-setup_bash_completion() {
-    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && \
-	. "/usr/local/etc/profile.d/bash_completion.sh"
-}
+setup_completion() {
+  if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
+    autoload -Uz compinit
+    compinit
+  fi
+}
 
 __docker_source_name() {
     # if empty string
@@ -107,6 +107,7 @@ setup_postgres_for_kubernetes_ci_tools() {
 
 main() {
     setup_aliases
+    setup_completion
     setup_git
     setup_go
     setup_gcloud
