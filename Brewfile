@@ -37,6 +37,7 @@ brew 'gnutls'
 brew 'ed'
 brew 'findutils'
 brew 'grep'
+brew 'gnu-time'
 
 cask 'docker'
 cask 'flycut'
