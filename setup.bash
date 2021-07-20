@@ -87,7 +87,7 @@ setup_prompt() {
 	__git_ps1 "
 (kubecontext=$(kube_ps1))
 (docker=$(__docker_source_name))
-[%n]" ":%~$ " " | %s"
+| %n" " | %~ $ " " | %s"
     }
 }
 
