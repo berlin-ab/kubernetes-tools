@@ -104,6 +104,12 @@ setup_postgres_for_kubernetes_ci_tools() {
     export PATH=$PATH:$HOME/workspace/postgres-for-kubernetes-ci/misc
 }
 
+setup_zsh() {
+    #WORDCHARS="*?_-.[]~=/&;!#$%^(){}<>"
+    # removed -
+    export WORDCHARS="*?_.[]~=/&;!#$%^(){}<>"
+}
+
 
 main() {
     setup_aliases
@@ -117,6 +123,7 @@ main() {
     setup_direnv
     setup_postgres_for_kubernetes_ci_tools
 
+    setup_zsh
     export EDITOR=emacs
 }
 
