@@ -55,7 +55,7 @@ brew 'kubernetes-cli'
 brew 'minikube'
 brew 'kustomize'
 brew 'kubebuilder'
-brew 'minio/stable/mc'
+brew 'minio-mc'
 brew 'stern'
 
 # Carvel tools
@@ -65,3 +65,6 @@ brew 'kapp'
 brew 'imgpkg'
 brew 'kwt'
 brew 'vendir'
+
+# Interviewing tools
+brew 'openjdk@8'
