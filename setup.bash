@@ -107,7 +107,8 @@ setup_postgres_for_kubernetes_ci_tools() {
 setup_zsh() {
     #WORDCHARS="*?_-.[]~=/&;!#$%^(){}<>"
     # removed -
-    export WORDCHARS="*?_.[]~=/&;!#$%^(){}<>"
+    # removed /
+    export WORDCHARS="*?_.[]~=&;!#$%^(){}<>"
 }
 
 

@@ -57,6 +57,7 @@ brew 'kustomize'
 brew 'kubebuilder'
 brew 'minio-mc'
 brew 'stern'
+brew 'krew'
 
 # Carvel tools
 brew 'ytt'
