@@ -111,6 +111,10 @@ setup_zsh() {
     export WORDCHARS="*?_.[]~=&;!#$%^(){}<>"
 }
 
+setup_coreutils() {
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+}
+
 
 main() {
     setup_aliases
@@ -123,7 +127,7 @@ main() {
     setup_kubebuilder
     setup_direnv
     setup_postgres_for_kubernetes_ci_tools
-
+    setup_coreutils
     setup_zsh
     export EDITOR=emacs
 }
