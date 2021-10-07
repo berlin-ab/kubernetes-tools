@@ -108,7 +108,8 @@ setup_zsh() {
     #WORDCHARS="*?_-.[]~=/&;!#$%^(){}<>"
     # removed -
     # removed /
-    export WORDCHARS="*?_.[]~=&;!#$%^(){}<>"
+    # removed ;
+    export WORDCHARS="*?_.[]~=&!#$%^(){}<>"
 }
 
 setup_coreutils() {
