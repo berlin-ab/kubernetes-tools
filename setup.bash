@@ -29,6 +29,8 @@ setup_aliases() {
     # shorthand binaries
     alias k='/usr/local/bin/kubectl'
     alias h='helm'
+
+    alias git='git-together'
 }
 
 setup_go() {
