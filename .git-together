@@ -1,0 +1,5 @@
+[git-together "authors"]
+	ab = "Adam Berlin; aberlin"
+[git-together]
+	domain = rocinante.com
+	domain = vmware.com

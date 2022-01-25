@@ -30,7 +30,7 @@ setup_aliases() {
     alias k='/usr/local/bin/kubectl'
     alias h='helm'
 
-    alias git='git-together'
+    export GIT_TOGETHER_NO_SIGNOFF=1
 }
 
 setup_go() {
@@ -54,6 +54,7 @@ setup_kubectl() {
 
 setup_completion() {
   if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
     autoload -Uz compinit
@@ -115,7 +116,7 @@ setup_zsh() {
 }
 
 setup_coreutils() {
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/make/libexec/gnubin:$PATH"
 }
 
 
