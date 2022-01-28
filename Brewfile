@@ -61,6 +61,7 @@ brew 'minio-mc'
 brew 'stern'
 brew 'krew'
 brew 'eksctl'
+brew 'azure-cli'
 
 # Carvel tools
 brew 'ytt'
