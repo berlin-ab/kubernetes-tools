@@ -76,7 +76,7 @@ __docker_source_name() {
 }
 
 __active_kubectl_context() {
-    local current_context=$(kubectl config current-context)
+    local current_context=$(kubectl config current-context 2>/dev/null)
     # if empty string
     if [ -z "$current_context" ]; then
        echo "no kubectl"
@@ -86,7 +86,7 @@ __active_kubectl_context() {
 }
 
 kube_ps1() {
-    kubectl config current-context
+    kubectl config current-context 2>/dev/null
 }
 
 setup_prompt() {
