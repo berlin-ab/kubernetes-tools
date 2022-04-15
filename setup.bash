@@ -30,6 +30,9 @@ setup_aliases() {
     alias k='/usr/local/bin/kubectl'
     alias h='helm'
 
+    # colorize ls
+    alias ls='ls --color'
+
     export GIT_TOGETHER_NO_SIGNOFF=1
 }
 
