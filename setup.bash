@@ -26,6 +26,7 @@ setup_aliases() {
     alias pgp='cd ~/workspace/pg-postgres-release'
     alias sc='cd ~/workspace/state-checker'
     alias vm='cd ~/workspace/tdm-adapter-vagrant-virtual-machine'
+    alias pga='cd ~/workspace/tdm-postgres-adapter'
 
     # shorthand binaries
     alias k='/usr/local/bin/kubectl'
