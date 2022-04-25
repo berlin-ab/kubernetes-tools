@@ -93,8 +93,8 @@ kube_ps1() {
 setup_prompt() {
     precmd () {
 	__git_ps1 "
-(kubecontext=$(kube_ps1))
-(docker=$(__docker_source_name))
+(kubecontext=$(kube_ps1)) (docker=$(__docker_source_name)) 
+(python=[$(python --version)] $(which python | sed s:$PWD:.:))
 | %n" " | %~ $ " " | %s"
     }
 }
@@ -106,10 +106,6 @@ setup_kubebuilder() {
 setup_direnv() {
     eval "$(direnv hook bash)"
     eval "$(direnv hook zsh)"
-}
-
-setup_postgres_for_kubernetes_ci_tools() {
-    export PATH=$PATH:$HOME/workspace/postgres-for-kubernetes-ci/misc
 }
 
 setup_zsh() {
@@ -124,8 +120,16 @@ setup_coreutils() {
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/make/libexec/gnubin:$PATH"
 }
 
+setup_python() {
+    if [ -f ./venv/bin/activate ]; then
+	source ./venv/bin/activate
+    fi
+}
+
 
 main() {
+    setup_python
+    setup_direnv
     setup_aliases
     setup_completion
     setup_git
@@ -134,8 +138,6 @@ main() {
     setup_prompt
     setup_kubectl
     setup_kubebuilder
-    setup_direnv
-    setup_postgres_for_kubernetes_ci_tools
     setup_coreutils
     setup_zsh
     export EDITOR=emacs
