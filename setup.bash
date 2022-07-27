@@ -27,10 +27,15 @@ setup_aliases() {
     alias sc='cd ~/workspace/state-checker'
     alias vm='cd ~/workspace/tdm-adapter-vagrant-virtual-machine'
     alias pga='cd ~/workspace/tdm-postgres-adapter'
+    alias gr='cd ~/workspace/tdm-vagrant-gitlab-runner'
+    alias dms='cd ~/workspace/dms-for-kubernetes'
 
     # shorthand binaries
-    alias k='/usr/local/bin/kubectl'
     alias h='helm'
+
+    # make kubectl into an alias k via symlink
+    # so that it works during watch
+    rm -f /usr/local/bin/k || true && ln -s $(which kubectl) /usr/local/bin/k
 
     # colorize ls
     alias ls='ls --color'
@@ -41,6 +46,7 @@ setup_aliases() {
 setup_go() {
     export GOPATH=$HOME/go
     export PATH=$PATH:$GOPATH/bin
+    export GOPRIVATE=gitlab.eng.vmware.com
 }
 
 setup_gcloud() {
