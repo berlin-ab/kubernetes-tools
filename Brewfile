@@ -29,6 +29,7 @@ brew 'watch'
 brew 'wget'
 brew 'yq'
 brew 'z'
+brew 'rbenv'
 
 # Replace Darwin utilities with GNU for compatibility with Linux
 brew 'gnu-indent'
@@ -62,6 +63,7 @@ brew 'stern'
 brew 'krew'
 brew 'eksctl'
 brew 'azure-cli'
+brew 'kube-ps1'
 
 # Carvel tools
 brew 'ytt'

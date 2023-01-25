@@ -28,7 +28,9 @@ setup_aliases() {
     alias vm='cd ~/workspace/tdm-adapter-vagrant-virtual-machine'
     alias pga='cd ~/workspace/tdm-postgres-adapter'
     alias gr='cd ~/workspace/tdm-vagrant-gitlab-runner'
-    alias dms='cd ~/workspace/dms-for-kubernetes'
+    alias mpg='cd ~/workspace/moneta-vmware-postgres-provisioner'
+    alias prov="cd ~/workspace/provisioner"
+    alias pc="cd ~/workspace/provisioner-common"
 
     # shorthand binaries
     alias h='helm'
@@ -92,15 +94,12 @@ __active_kubectl_context() {
     echo $current_context
 }
 
-kube_ps1() {
-    kubectl config current-context 2>/dev/null
-}
-
 setup_prompt() {
+    source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+    
     precmd () {
 	__git_ps1 "
-(kubecontext=$(kube_ps1)) (docker=$(__docker_source_name)) 
-(python=[$(python --version)] $(which python | sed s:$PWD:.:))
+(kubecontext=$(kube_ps1)) (docker=$(__docker_source_name))
 | %n" " | %~ $ " " | %s"
     }
 }
@@ -132,8 +131,13 @@ setup_python() {
     fi
 }
 
+setup_ruby() {
+    eval "$(rbenv init - zsh)"
+}
+
 
 main() {
+    setup_ruby
     setup_python
     setup_direnv
     setup_aliases
