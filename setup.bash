@@ -29,8 +29,15 @@ setup_aliases() {
     alias pga='cd ~/workspace/tdm-postgres-adapter'
     alias gr='cd ~/workspace/tdm-vagrant-gitlab-runner'
     alias mpg='cd ~/workspace/moneta-vmware-postgres-provisioner'
-    alias prov="cd ~/workspace/provisioner"
+    alias prov="cd ~/workspace/dsm-tsql-provisioner"
     alias pc="cd ~/workspace/provisioner-common"
+    alias dev="cd ~/workspace/moneta-development-environment"
+    alias gw="cd ~/workspace/moneta-gateway"
+    alias ks="cd ~/workspace/kubernetes-service"
+    alias sgw="cd ~/workspace/moneta-simplified-gateway"
+    alias canary="cd ~/workspace/canary-tests"
+    alias mats="cd ~/workspace/canary-tests/mats-runner"
+    alias rp="cd ~/workspace/resource-provisioners"
 
     # shorthand binaries
     alias h='helm'
